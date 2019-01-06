@@ -13,7 +13,7 @@ import (
 	"github.com/sqp/pulseaudio"
 )
 
-// === START: helper types for decode and encode to i3status protocol ===
+// === START: helper types for decode and encode to i3bar protocol ===
 type Protocol struct {
 	Version     int  `json:"version"`
 	StopSignal  int  `json:"stop_signal"`
@@ -58,7 +58,7 @@ const (
 	CENTER Align = "center"
 )
 
-// === END: helper types for decode and encode to i3status protocol ===
+// === END: helper types for decode and encode to i3bar protocol ===
 
 func handleInput(logger *log.Logger) {
 	decodeStdin := json.NewDecoder(os.Stdin)
