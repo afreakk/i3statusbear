@@ -92,15 +92,15 @@ func handleOutput(logger *log.Logger) {
 	// and send it to Stdout
 	encodeToStdout.Encode(protocol)
 
+	messages := []*Message{}
+
 	// start our array of arrays.. (we never end it though)
 	// kindof hacky, is there a better way ?
 	fmt.Print("[")
-
-	messages := []*Message{}
-
 	// render method.. gets called by modules when they need to redraw
 	renderMsgs := func() {
 		encodeToStdout.Encode(messages)
+		// And then separator between messages in our infinite array that never ends
 		fmt.Print(",")
 	}
 
