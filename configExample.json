@@ -1,0 +1,23 @@
+{
+    "modules": [{
+            "name": "datetime",
+            "instance": "1",
+            "color": "#0000ff",
+            "background": "#00ff00",
+            "border": "#ff0000",
+            "min_width": 200,
+            "align": "center",
+            "separator": true,
+            "separator_block_width": 18
+        },{
+            "name": "pulseaudio",
+            "instance": "1",
+            "color": "#ff00ff",
+            "background": "#f0f0f0",
+            "border": "#ffff00",
+            "min_width": 200,
+            "align": "center",
+            "separator": true,
+            "separator_block_width": 18
+        }]
+}
