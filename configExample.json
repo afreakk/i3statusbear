@@ -26,18 +26,6 @@
         "separator": true,
         "separator_block_width": 18
     },{
-        "name": "datetime",
-        "datetime_format": "15:04 2/Jan",
-        "instance": "1",
-        "color": "#0000ff",
-        "background": "#00ff00",
-        "border": "#ff0000",
-        "min_width": 200,
-        "align": "center",
-        "separator": true,
-        "separator_block_width": 18,
-        "markup": "pango"
-    },{
         "name": "pulseaudio",
         "instance": "1",
         "color": "#ff00ff",
@@ -52,5 +40,17 @@
         "volume_bar_filled": "=",
         "volume_bar_empty": " ",
         "sprintf": "[%s%s]"
+    },{
+        "name": "datetime",
+        "datetime_format": "15:04 2/Jan",
+        "instance": "1",
+        "color": "#0000ff",
+        "background": "#00ff00",
+        "border": "#ff0000",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18,
+        "markup": "pango"
     }]
 }

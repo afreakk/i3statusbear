@@ -22,7 +22,7 @@ func (o *Output) Init() {
 		// dont know about these params, found it somewhere, and it works..
 		StopSignal:  int(syscall.Signal(10)),
 		ContSignal:  int(syscall.Signal(12)),
-		ClickEvents: true,
+		ClickEvents: false,
 	}
 	// and send it to Stdout
 	o.encodeToStdout.Encode(protocol)
@@ -89,6 +89,5 @@ func HandleInput() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(json.Marshal(click))
 	}
 }
