@@ -1,23 +1,37 @@
 {
     "modules": [{
-            "name": "datetime",
-            "instance": "1",
-            "color": "#0000ff",
-            "background": "#00ff00",
-            "border": "#ff0000",
-            "min_width": 200,
-            "align": "center",
-            "separator": true,
-            "separator_block_width": 18
-        },{
-            "name": "pulseaudio",
-            "instance": "1",
-            "color": "#ff00ff",
-            "background": "#f0f0f0",
-            "border": "#ffff00",
-            "min_width": 200,
-            "align": "center",
-            "separator": true,
-            "separator_block_width": 18
-        }]
+        "name": "readfile",
+        "cron": "0 * * * * *",
+        "file_path": "/sys/class/drm/card0/device/hwmon/hwmon2/temp1_input",
+        "sprintf": "hi %1s ",
+        "instance": "1",
+        "color": "#ff00ff",
+        "background": "#f0f0f0",
+        "border": "#ffff00",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18
+    },{
+        "name": "datetime",
+        "instance": "1",
+        "color": "#0000ff",
+        "background": "#00ff00",
+        "border": "#ff0000",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18,
+        "markup": "pango"
+    },{
+        "name": "pulseaudio",
+        "instance": "1",
+        "color": "#ff00ff",
+        "background": "#f0f0f0",
+        "border": "#ffff00",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18
+    }]
 }
