@@ -11,12 +11,10 @@ import (
 )
 
 func Readfile(output *Protocol.Output, module Config.Module) {
-
 	c := cron.New()
 	formatString := func() string {
 		data, _ := ioutil.ReadFile(module.FilePath)
-		str := string(data)
-		return fmt.Sprintf(module.Sprintf, str)
+		return fmt.Sprintf(module.Sprintf, string(data))
 	}
 	fileMsg := &Protocol.Message{
 		FullText: formatString(),

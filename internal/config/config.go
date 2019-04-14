@@ -7,9 +7,16 @@ import (
 )
 
 type Module struct {
+	Cron    string `json:"cron,omitempty"`
+	Sprintf string `json:"sprintf,omitempty"`
+
 	FilePath string `json:"file_path,omitempty"`
-	Cron     string `json:"cron,omitempty"`
-	Sprintf  string `json:"sprintf,omitempty"`
+
+	DateTimeFormat string `json:"datetime_format,omitempty"`
+
+	VolumeWidth     int    `json:"volume_width"`
+	VolumeBarFilled string `json:"volume_bar_filled"`
+	VolumeBarEmpty  string `json:"volume_bar_empty"`
 
 	Color          string `json:"color,omitempty"`
 	Background     string `json:"background,omitempty"`

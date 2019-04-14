@@ -13,7 +13,7 @@ func Datetime(output *Protocol.Output, module Config.Module) {
 
 	c := cron.New()
 	formatDateTimeMsg := func() string {
-		return time.Now().Format("15:04 2/Jan")
+		return time.Now().Format(module.DateTimeFormat)
 	}
 	dateTimeMsg := &Protocol.Message{
 		FullText: formatDateTimeMsg(),

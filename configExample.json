@@ -1,10 +1,23 @@
 {
     "modules": [{
         "name": "readfile",
-        "cron": "0 * * * * *",
+        "cron": "@every 5s",
+        "file_path": "/sys/class/thermal/thermal_zone2/temp",
+        "sprintf": "cpu: %.2s ℃",
+        "instance": "cputemp",
+        "color": "#ff00ff",
+        "background": "#f0f000",
+        "border": "#ffff00",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18
+    },{
+        "name": "readfile",
+        "cron": "@every 5s",
         "file_path": "/sys/class/drm/card0/device/hwmon/hwmon2/temp1_input",
-        "sprintf": "hi %1s ",
-        "instance": "1",
+        "sprintf": "gpu: %.2s ℃",
+        "instance": "gputemp",
         "color": "#ff00ff",
         "background": "#f0f0f0",
         "border": "#ffff00",
@@ -14,6 +27,7 @@
         "separator_block_width": 18
     },{
         "name": "datetime",
+        "datetime_format": "15:04 2/Jan",
         "instance": "1",
         "color": "#0000ff",
         "background": "#00ff00",
@@ -32,6 +46,11 @@
         "min_width": 200,
         "align": "center",
         "separator": true,
-        "separator_block_width": 18
+        "separator_block_width": 18,
+
+        "volume_width": 20,
+        "volume_bar_filled": "=",
+        "volume_bar_empty": " ",
+        "sprintf": "[%s%s]"
     }]
 }

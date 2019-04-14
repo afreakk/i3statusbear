@@ -2,6 +2,7 @@ package pulseaudio
 
 import (
 	"fmt"
+	"strings"
 
 	Config "github.com/afreakk/i3statusbear/internal/config"
 	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
@@ -42,7 +43,12 @@ func Pulseaudio(output *Protocol.Output, module Config.Module) error {
 		return e
 	}
 	formatPulseAudioText := func(volumes []uint32, baseVolume uint32) string {
-		return fmt.Sprintf("vol %.2f", float32(volumes[0])/float32(baseVolume))
+		widthCount := module.VolumeWidth
+		filledBarsCount := int(float32(volumes[0]) / float32(baseVolume) * float32(widthCount))
+		remainingCount := widthCount - filledBarsCount
+		filledBars := strings.Repeat(module.VolumeBarFilled, filledBarsCount)
+		emptyBars := strings.Repeat(module.VolumeBarEmpty, remainingCount)
+		return fmt.Sprintf(module.Sprintf, filledBars, emptyBars)
 	}
 	pulseAudioMsg := &Protocol.Message{
 		FullText: formatPulseAudioText(volumes, baseVolume),
