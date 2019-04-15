@@ -1,9 +1,9 @@
 {
     "minimum_render_interval": "150ms",
     "modules": [{
-        "name": "memory",
+        "name": "cpu",
         "cron": "@every 5s",
-        "instance": "cputemp",
+        "instance": "cpu-uzg",
         "color": "#ff00ff",
         "background": "#f0f000",
         "border": "#ffff00",
@@ -12,7 +12,23 @@
         "separator": true,
         "separator_block_width": 18,
 
-        "bar_width": 20,
+        "bar_width": 15,
+        "bar_filled": "=",
+        "bar_empty": " ",
+        "sprintf": "cpu: [%s%s]"
+    },{
+        "name": "memory",
+        "cron": "@every 5s",
+        "instance": "lol",
+        "color": "#ff00ff",
+        "background": "#f0f000",
+        "border": "#ffff00",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18,
+
+        "bar_width": 15,
         "bar_filled": "=",
         "bar_empty": " ",
         "sprintf": "mem: [%s%s]"
@@ -21,7 +37,7 @@
         "cron": "@every 5s",
         "file_path": "/sys/class/thermal/thermal_zone2/temp",
         "sprintf": "cpu: %.2s ℃",
-        "instance": "cputemp",
+        "instance": "xx",
         "color": "#ff00ff",
         "background": "#f0f000",
         "border": "#ffff00",
@@ -34,7 +50,7 @@
         "cron": "@every 5s",
         "file_path": "/sys/class/drm/card0/device/hwmon/hwmon2/temp1_input",
         "sprintf": "gpu: %.2s ℃",
-        "instance": "gputemp",
+        "instance": "yy",
         "color": "#ff00ff",
         "background": "#f0f0f0",
         "border": "#ffff00",

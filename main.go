@@ -4,6 +4,7 @@ import (
 	"os"
 
 	Config "github.com/afreakk/i3statusbear/internal/config"
+	Cpu "github.com/afreakk/i3statusbear/internal/cpu"
 	Datetime "github.com/afreakk/i3statusbear/internal/datetime"
 	Memory "github.com/afreakk/i3statusbear/internal/memory"
 	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
@@ -32,6 +33,8 @@ func main() {
 			c.AddFunc(module.Cron, Readfile.Readfile(&output, module))
 		case "memory":
 			c.AddFunc(module.Cron, Memory.Memory(&output, module))
+		case "cpu":
+			c.AddFunc(module.Cron, Cpu.Cpu(&output, module))
 		}
 	}
 	output.PrintMsgs()
