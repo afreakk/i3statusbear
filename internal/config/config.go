@@ -14,9 +14,9 @@ type Module struct {
 
 	DateTimeFormat string `json:"datetime_format,omitempty"`
 
-	VolumeWidth     int    `json:"volume_width"`
-	VolumeBarFilled string `json:"volume_bar_filled"`
-	VolumeBarEmpty  string `json:"volume_bar_empty"`
+	BarWidth  int64  `json:"bar_width"`
+	BarFilled string `json:"bar_filled"`
+	BarEmpty  string `json:"bar_empty"`
 
 	Color          string `json:"color,omitempty"`
 	Background     string `json:"background,omitempty"`

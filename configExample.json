@@ -1,6 +1,22 @@
 {
-    "minimum_render_interval": "1ms",
+    "minimum_render_interval": "150ms",
     "modules": [{
+        "name": "memory",
+        "cron": "@every 5s",
+        "instance": "cputemp",
+        "color": "#ff00ff",
+        "background": "#f0f000",
+        "border": "#ffff00",
+        "min_width": 200,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 18,
+
+        "bar_width": 20,
+        "bar_filled": "=",
+        "bar_empty": " ",
+        "sprintf": "mem: [%s%s]"
+    },{
         "name": "readfile",
         "cron": "@every 5s",
         "file_path": "/sys/class/thermal/thermal_zone2/temp",
@@ -37,10 +53,10 @@
         "separator": true,
         "separator_block_width": 18,
 
-        "volume_width": 20,
-        "volume_bar_filled": "=",
-        "volume_bar_empty": " ",
-        "sprintf": "[%s%s]"
+        "bar_width": 20,
+        "bar_filled": "=",
+        "bar_empty": " ",
+        "sprintf": "🔊 [%s%s]"
     },{
         "name": "datetime",
         "datetime_format": "15:04 2/Jan",

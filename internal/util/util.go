@@ -1,6 +1,9 @@
 package util
 
 import (
+	"fmt"
+	"strings"
+
 	Config "github.com/afreakk/i3statusbear/internal/config"
 	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
 )
@@ -40,4 +43,12 @@ func ApplyModuleConfigToMessage(module Config.Module, message *Protocol.Message)
 	if module.Instance != "" {
 		message.Instance = module.Instance
 	}
+}
+
+func RenderBar(module Config.Module, filled int64, total int64) string {
+	filledBarsCount := filled * module.BarWidth / total
+	remainingCount := module.BarWidth - filledBarsCount
+	filledBars := strings.Repeat(module.BarFilled, int(filledBarsCount))
+	emptyBars := strings.Repeat(module.BarEmpty, int(remainingCount))
+	return fmt.Sprintf(module.Sprintf, filledBars, emptyBars)
 }

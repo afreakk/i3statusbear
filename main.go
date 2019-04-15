@@ -5,6 +5,7 @@ import (
 
 	Config "github.com/afreakk/i3statusbear/internal/config"
 	Datetime "github.com/afreakk/i3statusbear/internal/datetime"
+	Memory "github.com/afreakk/i3statusbear/internal/memory"
 	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
 	Pulseaudio "github.com/afreakk/i3statusbear/internal/pulseaudio"
 	Readfile "github.com/afreakk/i3statusbear/internal/readfile"
@@ -29,6 +30,8 @@ func main() {
 			Pulseaudio.Pulseaudio(&output, module)
 		case "readfile":
 			c.AddFunc(module.Cron, Readfile.Readfile(&output, module))
+		case "memory":
+			c.AddFunc(module.Cron, Memory.Memory(&output, module))
 		}
 	}
 	output.PrintMsgs()
