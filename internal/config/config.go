@@ -33,7 +33,8 @@ type Module struct {
 }
 
 type Config struct {
-	Modules []Module `json:"modules"`
+	Modules               []Module `json:"modules"`
+	MinimumRenderInterval string   `json:"minimum_render_interval"`
 }
 
 func GetConfigFromPath(configFilePath string) Config {

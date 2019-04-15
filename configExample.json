@@ -1,4 +1,5 @@
 {
+    "minimum_render_interval": "1ms",
     "modules": [{
         "name": "readfile",
         "cron": "@every 5s",
@@ -43,6 +44,7 @@
     },{
         "name": "datetime",
         "datetime_format": "15:04 2/Jan",
+        "cron": "0 * * * * *",
         "instance": "1",
         "color": "#0000ff",
         "background": "#00ff00",

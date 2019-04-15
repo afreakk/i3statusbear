@@ -2,41 +2,62 @@ package protocol
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
+	"sync"
 	"syscall"
+	"time"
+
+	Config "github.com/afreakk/i3statusbear/internal/config"
 )
 
 type Output struct {
-	encodeToStdout *json.Encoder
-	Messages       []*Message
+	encodeToStdout       *json.Encoder
+	Messages             []*Message
+	renderTimer          *time.Timer
+	renderTimerIsRunning bool
+	renderInterval       time.Duration
+	mux                  sync.Mutex
+	jsonSeparator        []byte
 }
 
-func (o *Output) Init() {
+func (o *Output) Init(config Config.Config) {
+	o.jsonSeparator = []byte(",")
 	// init stdout writer
 	o.encodeToStdout = json.NewEncoder(os.Stdout)
+	o.encodeToStdout.SetEscapeHTML(false)
 
 	// then we need to specify protocol we use
-	protocol := Protocol{
+	// and send it to Stdout
+	o.encodeToStdout.Encode(Protocol{
 		Version: 1,
 		// dont know about these params, found it somewhere, and it works..
 		StopSignal:  int(syscall.Signal(10)),
 		ContSignal:  int(syscall.Signal(12)),
 		ClickEvents: false,
-	}
-	// and send it to Stdout
-	o.encodeToStdout.Encode(protocol)
+	})
 	// start our array of arrays.. (we never end it though)
 	// kindof hacky, is there a better way ?
-	fmt.Print("[")
+	os.Stdout.Write([]byte("["))
 
 	o.Messages = []*Message{}
+
+	o.renderInterval, _ = time.ParseDuration(config.MinimumRenderInterval)
+	o.renderTimer = time.AfterFunc(o.renderInterval, o.actuallyPrintMsgs)
 }
 
-func (o Output) PrintMsgs() {
+func (o *Output) PrintMsgs() {
+	o.mux.Lock()
+	if !o.renderTimerIsRunning {
+		o.renderTimer.Reset(o.renderInterval)
+		o.renderTimerIsRunning = true
+	}
+	o.mux.Unlock()
+}
+func (o *Output) actuallyPrintMsgs() {
+	o.renderTimerIsRunning = false
 	o.encodeToStdout.Encode(o.Messages)
 	// And then separator between messages in our infinite array that never ends
-	fmt.Print(",")
+	os.Stdout.Write(o.jsonSeparator)
 }
 
 // === START: helper types for decode and encode to i3bar protocol ===
@@ -77,17 +98,19 @@ type Message struct {
 }
 
 func HandleInput() {
-	decodeStdin := json.NewDecoder(os.Stdin)
-	// Read openbracket
-	_, err := decodeStdin.Token()
-	if err != nil {
-		panic(err)
-	}
-	for decodeStdin.More() {
-		click := &Click{}
-		err := decodeStdin.Decode(click)
+	/*
+		decodeStdin := json.NewDecoder(os.Stdin)
+		// Read openbracket
+		_, err := decodeStdin.Token()
 		if err != nil {
 			panic(err)
 		}
-	}
+		for decodeStdin.More() {
+			click := &Click{}
+			err := decodeStdin.Decode(click)
+			if err != nil {
+				panic(err)
+			}
+		}
+	*/
 }

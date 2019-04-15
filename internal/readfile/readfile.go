@@ -7,11 +7,9 @@ import (
 	Config "github.com/afreakk/i3statusbear/internal/config"
 	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
 	Util "github.com/afreakk/i3statusbear/internal/util"
-	"github.com/robfig/cron"
 )
 
-func Readfile(output *Protocol.Output, module Config.Module) {
-	c := cron.New()
+func Readfile(output *Protocol.Output, module Config.Module) func() {
 	formatString := func() string {
 		data, _ := ioutil.ReadFile(module.FilePath)
 		return fmt.Sprintf(module.Sprintf, string(data))
@@ -19,11 +17,10 @@ func Readfile(output *Protocol.Output, module Config.Module) {
 	fileMsg := &Protocol.Message{
 		FullText: formatString(),
 	}
+	output.Messages = append(output.Messages, fileMsg)
 	Util.ApplyModuleConfigToMessage(module, fileMsg)
-	c.AddFunc(module.Cron, func() {
+	return func() {
 		fileMsg.FullText = formatString()
 		output.PrintMsgs()
-	})
-	c.Start()
-	output.Messages = append(output.Messages, fileMsg)
+	}
 }
