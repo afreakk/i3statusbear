@@ -38,6 +38,7 @@ type Module struct {
 type Config struct {
 	Modules               []Module `json:"modules"`
 	MinimumRenderInterval string   `json:"minimum_render_interval"`
+	WMClient              string   `json:"wmclient,omitempty"`
 }
 
 func GetConfigFromPath(configFilePath string) Config {

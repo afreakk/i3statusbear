@@ -1,6 +1,19 @@
 {
+    "wmclient": "sway",
     "minimum_render_interval": "150ms",
     "modules": [{
+        "name": "activewindow",
+        "instance": "1",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+        "markup": "pango",
+        "sprintf": "[<span fgcolor='#FD00E1'>%s</span>]"
+    },{
         "name": "datetime",
         "datetime_format": "[<span fgcolor='#FD00E1'>15:04 2/Jan</span>]",
         "cron": "0 * * * * *",

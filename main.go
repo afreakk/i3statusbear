@@ -3,6 +3,8 @@ package main
 import (
 	"os"
 
+	i3 "github.com/afreakk/go-i3"
+	ActiveWindow "github.com/afreakk/i3statusbear/internal/activewindow"
 	Command "github.com/afreakk/i3statusbear/internal/command"
 	Config "github.com/afreakk/i3statusbear/internal/config"
 	Cpu "github.com/afreakk/i3statusbear/internal/cpu"
@@ -19,6 +21,10 @@ func main() {
 	config := Config.GetConfigFromPath(configFilePath)
 
 	go Protocol.HandleInput()
+
+	if config.WMClient == "sway" {
+		i3.WMClient = i3.WMTypeSway
+	}
 
 	output := Protocol.Output{}
 	output.Init(config)
@@ -38,6 +44,8 @@ func main() {
 			c.AddFunc(module.Cron, Cpu.Cpu(&output, module))
 		case "command":
 			c.AddFunc(module.Cron, Command.Command(&output, module))
+		case "activewindow":
+			ActiveWindow.ActiveWindow(&output, module)
 		}
 	}
 	output.PrintMsgs()

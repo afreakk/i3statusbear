@@ -2,6 +2,37 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:2892ec86e43d4d77de66a06e179ccef7a691983c181635d17b7eeda3b89a9be5"
+  name = "github.com/BurntSushi/xgb"
+  packages = [
+    ".",
+    "xinerama",
+    "xproto",
+  ]
+  pruneopts = "UT"
+  revision = "27f122750802c950b2c869a5b63dafcf590ced95"
+
+[[projects]]
+  branch = "master"
+  digest = "1:1b953dfb68766a3d9e326510ce20cb759b216698bd1d08f725493e5ddbb23258"
+  name = "github.com/BurntSushi/xgbutil"
+  packages = [
+    ".",
+    "xprop",
+  ]
+  pruneopts = "UT"
+  revision = "f7c97cef3b4e6c88280a5a7091c3314e815ca243"
+
+[[projects]]
+  branch = "master"
+  digest = "1:e294719aad9806b19e130de86cda5bfbeb9eccf80b2fd2f09fba2271a3e63b67"
+  name = "github.com/afreakk/go-i3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "fea95c4c1b3d43d364a1e5a5862985150d05a506"
+
+[[projects]]
   digest = "1:b3d20bcdedab2050e6bc58e52f4fdc46f710b4c74e1a1ecee262ebec1aee7b6e"
   name = "github.com/godbus/dbus"
   packages = ["."]
@@ -29,6 +60,8 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/afreakk/go-i3",
+    "github.com/godbus/dbus",
     "github.com/robfig/cron",
     "github.com/sqp/pulseaudio",
   ]
