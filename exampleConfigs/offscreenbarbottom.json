@@ -1,4 +1,5 @@
 {
+    "wmclient": "sway",
     "minimum_render_interval": "150ms",
     "modules": [{
         "name": "memory",

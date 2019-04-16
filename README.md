@@ -1,6 +1,6 @@
 # StatusBear
 ## Go code for talking with [i3 bar](https://i3wm.org/i3bar/) using [i3 protocol](https://i3wm.org/docs/i3bar-protocol.html) and creating usefull and fast bars.
-## Also works with Sway!
+## Also works with [Sway](https://swaywm.org/)!
 
 ![Example](https://github.com/afreakk/i3statusbear/blob/master/imgs/bars.png "Example bars")
 
