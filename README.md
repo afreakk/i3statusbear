@@ -1,6 +1,17 @@
 # StatusBear
-## Go code for talking with [i3 bar](https://i3wm.org/i3bar/) using [i3 protocol](https://i3wm.org/docs/i3bar-protocol.html) and creating usefull and fast bars for multiple monitors.  
+## Go code for talking with [i3 bar](https://i3wm.org/i3bar/) using [i3 protocol](https://i3wm.org/docs/i3bar-protocol.html) and creating usefull and fast bars.
+## Also works with Sway!
 
+![Example](https://github.com/afreakk/i3statusbear/blob/master/imgs/bars.png "Example bars")
+
+## Modules
+- activewindow
+- command (run bash scripts etc)
+- cpu (usage)
+- datetime
+- memory (usage)
+- pulseaudio (volume bar)
+- readfile (read arbitrary file)
 
 ## Example usage (from my swaywm config)
 ```

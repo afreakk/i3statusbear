@@ -3,6 +3,40 @@
     "modules": [{
         "name": "command",
         "cron": "@every 30s",
+        "instance": "freespace_bigdisk",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
+        "command_args": ["/mnt/bigdisk"],
+
+        "sprintf": "[<span fgcolor='#FD00E1'>%s</span>]",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 30s",
+        "instance": "freespace_root",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 300,
+        "align": "left",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
+        "command_args": ["/"],
+
+        "sprintf": "[<span fgcolor='#FD00E1'>%s</span>]",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 30s",
         "instance": "archPkgStatus",
         "color": "#00FFD5",
         "background": "#303030",

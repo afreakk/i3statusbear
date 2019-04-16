@@ -24,8 +24,8 @@
         "color": "#00FFD5",
         "background": "#303030",
         "border": "#000000",
-        "min_width": 200,
-        "align": "center",
+        "min_width": 500,
+        "align": "right",
         "separator": false,
         "separator_block_width": 1,
 
@@ -70,8 +70,8 @@
         "color": "#00FFD5",
         "background": "#303030",
         "border": "#000000",
-        "min_width": 150,
-        "align": "center",
+        "min_width": 350,
+        "align": "right",
         "separator": true,
         "separator_block_width": 9,
         "markup": "pango"
