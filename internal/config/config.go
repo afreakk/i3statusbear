@@ -18,6 +18,9 @@ type Module struct {
 	BarFilled string `json:"bar_filled"`
 	BarEmpty  string `json:"bar_empty"`
 
+	CommandName string   `json:"command_name,omitempty"`
+	CommandArgs []string `json:"command_args,omitempty"`
+
 	Color          string `json:"color,omitempty"`
 	Background     string `json:"background,omitempty"`
 	Border         string `json:"border,omitempty"`

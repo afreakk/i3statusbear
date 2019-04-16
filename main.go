@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 
+	Command "github.com/afreakk/i3statusbear/internal/command"
 	Config "github.com/afreakk/i3statusbear/internal/config"
 	Cpu "github.com/afreakk/i3statusbear/internal/cpu"
 	Datetime "github.com/afreakk/i3statusbear/internal/datetime"
@@ -35,6 +36,8 @@ func main() {
 			c.AddFunc(module.Cron, Memory.Memory(&output, module))
 		case "cpu":
 			c.AddFunc(module.Cron, Cpu.Cpu(&output, module))
+		case "command":
+			c.AddFunc(module.Cron, Command.Command(&output, module))
 		}
 	}
 	output.PrintMsgs()

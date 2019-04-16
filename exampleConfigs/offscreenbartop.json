@@ -1,0 +1,103 @@
+{
+    "minimum_render_interval": "150ms",
+    "modules": [{
+        "name": "command",
+        "cron": "@every 30s",
+        "instance": "archPkgStatus",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
+
+        "sprintf": "(%s)",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 10s",
+        "instance": "bitcoin",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
+        "command_args": ["bitcoin"],
+
+        "sprintf": "<b>₿</b> <span fgcolor='#FD00E1'>%.4s</span>",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 10s",
+        "instance": "bch",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
+        "command_args": ["bitcoin-cash"],
+
+        "sprintf": "<b>bch</b> <span fgcolor='#FD00E1'>%.3s</span>",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 10s",
+        "instance": "ethereum",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
+        "command_args": ["ethereum"],
+
+        "sprintf": "<b>Ξ</b> <span fgcolor='#FD00E1'>%.3s</span>",
+        "markup": "pango"
+    },{
+        "name": "pulseaudio",
+        "instance": "1",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 200,
+        "align": "center",
+        "separator": false,
+        "separator_block_width": 9,
+
+        "bar_width": 20,
+        "bar_filled": "=",
+        "bar_empty": " ",
+        "sprintf": "🔊 [<span fgcolor='#FD00E1'>%s%s</span>]",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 10s",
+        "instance": "redshift",
+        "color": "#00FFD5",
+        "background": "#303030",
+        "border": "#000000",
+        "min_width": 150,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/redshift.sh",
+
+        "sprintf": "%s",
+        "markup": "pango"
+    }]
+}
