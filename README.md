@@ -17,13 +17,17 @@
 ```
 bar {
     position bottom
+	id main_bar
     status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/mainbar.json
 	output $primaryScreen
 	tray_output none
+	separator_symbol ""
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #000000
+        inactive_workspace #000000 #000000 #00FFD5
+        focused_workspace #000000 #00FFD5 #FD00E1
+		active_workspace #000000 #00FFD540 #000000
+		urgent_workspace #000000 #FD00E1 #000000
     }
 }
 
@@ -33,21 +37,26 @@ bar {
     status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbartop.json
 	output $offScreen
 	tray_output none
+	id off_bar_top
+	bindsym button4 exec ~/bin/setSinkVolumeDefault.sh +5%
+	bindsym button5 exec ~/bin/setSinkVolumeDefault.sh -5%
+	separator_symbol ""
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #000000
     }
 }
 
 bar {
     position bottom
+	id off_bar_bottom
     status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbarbottom.json
 	output $offScreen
+	separator_symbol ""
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #000000
+        inactive_workspace #000000 #000000 #00FFD5
+        focused_workspace #000000 #00FFD5 #FD00E1
+		active_workspace #000000 #00FFD540 #000000
     }
 }
 
