@@ -41,7 +41,11 @@ func (o *Output) Init(config Config.Config) {
 
 	o.Messages = []*Message{}
 
-	o.renderInterval, _ = time.ParseDuration(config.MinimumRenderInterval)
+	var err error
+	o.renderInterval, err = time.ParseDuration(config.MinimumRenderInterval)
+	if err != nil {
+		panic(err)
+	}
 	o.renderTimer = time.AfterFunc(o.renderInterval, o.actuallyPrintMsgs)
 }
 

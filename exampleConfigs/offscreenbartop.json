@@ -23,7 +23,7 @@
         "instance": "freespace_root",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 270,
+        "min_width": 350,
         "align": "left",
         "separator": true,
         "separator_block_width": 9,
@@ -35,26 +35,11 @@
         "markup": "pango"
     },{
         "name": "command",
-        "cron": "@every 30s",
-        "instance": "archPkgStatus",
-        "color": "#00FFD5",
-        "border": "#000000",
-        "min_width": 150,
-        "align": "center",
-        "separator": true,
-        "separator_block_width": 9,
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
-
-        "sprintf": "(%s)",
-        "markup": "pango"
-    },{
-        "name": "command",
         "cron": "@every 10s",
         "instance": "bitcoin",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 150,
+        "min_width": 100,
         "align": "center",
         "separator": true,
         "separator_block_width": 9,
@@ -70,7 +55,7 @@
         "instance": "bch",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 150,
+        "min_width": 100,
         "align": "center",
         "separator": true,
         "separator_block_width": 9,
@@ -86,7 +71,7 @@
         "instance": "ethereum",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 150,
+        "min_width": 100,
         "align": "center",
         "separator": true,
         "separator_block_width": 9,
@@ -101,8 +86,8 @@
         "instance": "1",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 200,
-        "align": "center",
+        "min_width": 600,
+        "align": "right",
         "separator": false,
         "separator_block_width": 9,
 
@@ -117,7 +102,7 @@
         "instance": "redshift",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 150,
+        "min_width": 0,
         "align": "center",
         "separator": true,
         "separator_block_width": 9,
@@ -125,6 +110,21 @@
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/redshift.sh",
 
         "sprintf": "%s",
+        "markup": "pango"
+    },{
+        "name": "command",
+        "cron": "@every 30s",
+        "instance": "archPkgStatus",
+        "color": "#00FFD5",
+        "border": "#000000",
+        "min_width": 10,
+        "align": "center",
+        "separator": true,
+        "separator_block_width": 9,
+
+        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
+
+        "sprintf": "(%s)",
         "markup": "pango"
     }]
 }

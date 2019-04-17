@@ -16,23 +16,23 @@
 ## Example usage (from my swaywm config)
 ```
 bar {
-    position bottom
+	position bottom
 	id main_bar
     status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/mainbar.json
 	output $primaryScreen
 	tray_output none
 	separator_symbol ""
-    colors {
-        background #000000
-        inactive_workspace #000000 #000000 #00FFD5
-        focused_workspace #000000 #00FFD5 #FD00E1
-		active_workspace #000000 #00FFD540 #000000
-		urgent_workspace #000000 #FD00E1 #000000
-    }
+	colors {
+		background #000000
+		inactive_workspace	#000000 #000000	#00FFD5
+		focused_workspace	#000000 #00FFD5	#000000
+		active_workspace	#000000 #008c75	#000000
+		urgent_workspace	#000000 #FD00E1	#000000
+	}
 }
 
 bar {
-    position top
+	position top
 	workspace_buttons no
     status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbartop.json
 	output $offScreen
@@ -41,23 +41,23 @@ bar {
 	bindsym button4 exec ~/bin/setSinkVolumeDefault.sh +5%
 	bindsym button5 exec ~/bin/setSinkVolumeDefault.sh -5%
 	separator_symbol ""
-    colors {
-        background #000000
-    }
+	colors {
+		background #000000
+	}
 }
 
 bar {
-    position bottom
+	position bottom
 	id off_bar_bottom
-    status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbarbottom.json
+	status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbarbottom.json
 	output $offScreen
 	separator_symbol ""
-    colors {
-        background #000000
-        inactive_workspace #000000 #000000 #00FFD5
-        focused_workspace #000000 #00FFD5 #FD00E1
-		active_workspace #000000 #00FFD540 #000000
-    }
+	colors {
+		background #000000
+		inactive_workspace	#000000 #000000	#00FFD5
+		focused_workspace	#000000 #00FFD5	#000000
+		active_workspace	#000000 #008c75	#000000
+		urgent_workspace	#000000 #FD00E1	#000000
+	}
 }
-
 ```
