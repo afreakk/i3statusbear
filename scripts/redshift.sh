@@ -13,5 +13,5 @@ if [ "$(pgrep -x redshift)" ]; then
         echo "<span fgcolor='#D08770'>$icon</span>"
     fi
 else
-    echo "<span fgcolor='#FFFFFF'>$icon(off)</span>"
+    echo "<span fgcolor='#FFFFFF'>$icon[off]</span>"
 fi

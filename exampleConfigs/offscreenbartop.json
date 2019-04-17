@@ -8,7 +8,7 @@
         "color": "#00FFD5",
         "border": "#000000",
         "min_width": 150,
-        "align": "center",
+        "align": "left",
         "separator": true,
         "separator_block_width": 9,
 
@@ -23,7 +23,7 @@
         "instance": "freespace_root",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 350,
+        "min_width": 330,
         "align": "left",
         "separator": true,
         "separator_block_width": 9,
@@ -86,7 +86,7 @@
         "instance": "1",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 600,
+        "min_width": 560,
         "align": "right",
         "separator": false,
         "separator_block_width": 9,
@@ -103,7 +103,7 @@
         "color": "#00FFD5",
         "border": "#000000",
         "min_width": 0,
-        "align": "center",
+        "align": "right",
         "separator": true,
         "separator_block_width": 9,
 
@@ -117,14 +117,14 @@
         "instance": "archPkgStatus",
         "color": "#00FFD5",
         "border": "#000000",
-        "min_width": 10,
-        "align": "center",
+        "min_width": 0,
+        "align": "right",
         "separator": true,
         "separator_block_width": 9,
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
 
-        "sprintf": "(%s)",
+        "sprintf": "[%s]",
         "markup": "pango"
     }]
 }
