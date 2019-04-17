@@ -19,6 +19,9 @@ import (
 func main() {
 	configFilePath := os.Args[1]
 	config := Config.GetConfigFromPath(configFilePath)
+	if len(os.Args) > 2 {
+		config.WMClient = os.Args[2]
+	}
 
 	go Protocol.HandleInput()
 
