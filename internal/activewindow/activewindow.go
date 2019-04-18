@@ -41,8 +41,12 @@ func ActiveWindow(output *Protocol.Output, module Config.Module) {
 	}
 	Util.ApplyModuleConfigToMessage(module, wndMsg)
 	output.Messages = append(output.Messages, wndMsg)
+	var lastFullText string
 	go subscribeToI3Event(i3.WindowEventType, func() {
 		wndMsg.FullText = formatString()
-		output.PrintMsgs()
+		if lastFullText != wndMsg.FullText {
+			output.PrintMsgs()
+		}
+		lastFullText = wndMsg.FullText
 	})
 }

@@ -49,8 +49,12 @@ func Cpu(output *Protocol.Output, module Config.Module) func() {
 	}
 	output.Messages = append(output.Messages, cpuMsg)
 	Util.ApplyModuleConfigToMessage(module, cpuMsg)
+	var lastFullText string
 	return func() {
 		cpuMsg.FullText = formatString()
-		output.PrintMsgs()
+		if lastFullText != cpuMsg.FullText {
+			output.PrintMsgs()
+		}
+		lastFullText = cpuMsg.FullText
 	}
 }

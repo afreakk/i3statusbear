@@ -24,8 +24,12 @@ func Command(output *Protocol.Output, module Config.Module) func() {
 	}
 	output.Messages = append(output.Messages, cmdMsg)
 	Util.ApplyModuleConfigToMessage(module, cmdMsg)
+	var lastFullText string
 	return func() {
 		cmdMsg.FullText = formatString()
-		output.PrintMsgs()
+		if lastFullText != cmdMsg.FullText {
+			output.PrintMsgs()
+		}
+		lastFullText = cmdMsg.FullText
 	}
 }

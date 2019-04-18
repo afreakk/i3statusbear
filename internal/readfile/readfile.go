@@ -19,8 +19,12 @@ func Readfile(output *Protocol.Output, module Config.Module) func() {
 	}
 	output.Messages = append(output.Messages, fileMsg)
 	Util.ApplyModuleConfigToMessage(module, fileMsg)
+	var lastFullText string
 	return func() {
 		fileMsg.FullText = formatString()
-		output.PrintMsgs()
+		if lastFullText != fileMsg.FullText {
+			output.PrintMsgs()
+		}
+		lastFullText = fileMsg.FullText
 	}
 }

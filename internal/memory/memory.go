@@ -37,8 +37,12 @@ func Memory(output *Protocol.Output, module Config.Module) func() {
 	}
 	output.Messages = append(output.Messages, memMsg)
 	Util.ApplyModuleConfigToMessage(module, memMsg)
+	var lastFullText string
 	return func() {
 		memMsg.FullText = formatString()
-		output.PrintMsgs()
+		if lastFullText != memMsg.FullText {
+			output.PrintMsgs()
+		}
+		lastFullText = memMsg.FullText
 	}
 }
