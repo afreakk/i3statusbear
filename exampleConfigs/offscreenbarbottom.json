@@ -6,7 +6,7 @@
         "cron": "@every 5s",
         "instance": "lol",
         "color": "#00FFD5",
-        "min_width": 200,
+        "min_width": 600,
         "align": "center",
 
         "bar_width": 15,
@@ -34,7 +34,7 @@
         "sprintf": "<span fgcolor='#FD00E1'>%.2s℃</span>",
         "instance": "cputemp",
         "color": "#00FFD5",
-        "min_width": 110,
+        "min_width": 160,
         "align": "left",
         "markup": "pango"
     },{

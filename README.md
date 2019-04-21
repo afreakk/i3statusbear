@@ -18,7 +18,7 @@
 bar {
 	position bottom
 	id main_bar
-    status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/mainbar.json
+	status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/mainbar.json
 	output $primaryScreen
 	tray_output none
 	separator_symbol ""
@@ -34,7 +34,7 @@ bar {
 bar {
 	position top
 	workspace_buttons no
-    status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbartop.json
+	status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbartop.json
 	output $offScreen
 	tray_output none
 	id off_bar_top

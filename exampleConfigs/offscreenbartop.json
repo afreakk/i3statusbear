@@ -70,8 +70,8 @@
         "name": "pulseaudio",
         "instance": "1",
         "color": "#00FFD5",
-        "min_width": 560,
-        "align": "right",
+        "min_width": 600,
+        "align": "center",
 
         "bar_width": 20,
         "bar_filled": "‾",
@@ -83,7 +83,7 @@
         "cron": "@every 10s",
         "instance": "redshift",
         "color": "#00FFD5",
-        "min_width": 0,
+        "min_width": 125,
         "align": "right",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/redshift.sh",
@@ -95,7 +95,7 @@
         "cron": "@every 30s",
         "instance": "archPkgStatus",
         "color": "#00FFD5",
-        "min_width": 0,
+        "min_width": 213,
         "align": "right",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
