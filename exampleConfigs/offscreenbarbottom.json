@@ -6,11 +6,8 @@
         "cron": "@every 5s",
         "instance": "lol",
         "color": "#00FFD5",
-        "border": "#000000",
         "min_width": 200,
         "align": "center",
-        "separator": true,
-        "separator_block_width": 9,
 
         "bar_width": 15,
         "bar_filled": "‾",
@@ -22,11 +19,8 @@
         "cron": "@every 5s",
         "instance": "cpu-uzg",
         "color": "#00FFD5",
-        "border": "#000000",
         "min_width": 450,
         "align": "right",
-        "separator": false,
-        "separator_block_width": 1,
 
         "bar_width": 15,
         "bar_filled": "‾",
@@ -40,11 +34,8 @@
         "sprintf": "<span fgcolor='#FD00E1'>%.2s℃</span>",
         "instance": "cputemp",
         "color": "#00FFD5",
-        "border": "#000000",
         "min_width": 110,
         "align": "left",
-        "separator": false,
-        "separator_block_width": 9,
         "markup": "pango"
     },{
         "name": "readfile",
@@ -53,11 +44,8 @@
         "sprintf": "[gpu <span fgcolor='#FD00E1'>%.2s℃</span>]",
         "instance": "gputemp",
         "color": "#00FFD5",
-        "border": "#000000",
         "min_width": 200,
         "align": "center",
-        "separator": false,
-        "separator_block_width": 9,
         "markup": "pango"
     },{
         "name": "datetime",
@@ -65,11 +53,8 @@
         "cron": "0 * * * * *",
         "instance": "1",
         "color": "#00FFD5",
-        "border": "#000000",
         "min_width": 360,
         "align": "right",
-        "separator": true,
-        "separator_block_width": 9,
         "markup": "pango"
     }]
 }
