@@ -3,7 +3,6 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
-	"os"
 )
 
 type Module struct {
@@ -42,19 +41,15 @@ type Config struct {
 }
 
 func GetConfigFromPath(configFilePath string) Config {
-	configFile, error := os.Open(configFilePath)
+	cfgTxt, error := ioutil.ReadFile(configFilePath)
 	if error != nil {
 		panic(error)
 	}
-	defer configFile.Close()
-	configTxt, error := ioutil.ReadAll(configFile)
-	if error != nil {
+
+	var cfg Config
+	if error = json.Unmarshal(cfgTxt, &cfg); error != nil {
 		panic(error)
 	}
-	var config Config
-	error = json.Unmarshal(configTxt, &config)
-	if error != nil {
-		panic(error)
-	}
-	return config
+
+	return cfg
 }

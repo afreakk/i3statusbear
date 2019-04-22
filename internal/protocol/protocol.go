@@ -20,7 +20,7 @@ type Output struct {
 	jsonSeparator        []byte
 }
 
-func (o *Output) Init(config config.Config) {
+func (o *Output) Init(cfg config.Config) {
 	o.jsonSeparator = []byte(",")
 	// init stdout writer
 	o.encodeToStdout = json.NewEncoder(os.Stdout)
@@ -42,8 +42,7 @@ func (o *Output) Init(config config.Config) {
 	o.Messages = []*Message{}
 
 	var err error
-	o.renderInterval, err = time.ParseDuration(config.MinimumRenderInterval)
-	if err != nil {
+	if o.renderInterval, err = time.ParseDuration(cfg.MinimumRenderInterval); err != nil {
 		panic(err)
 	}
 	o.renderTimer = time.AfterFunc(o.renderInterval, o.actuallyPrintMsgs)
