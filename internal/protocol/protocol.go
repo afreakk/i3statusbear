@@ -7,7 +7,7 @@ import (
 	"syscall"
 	"time"
 
-	Config "github.com/afreakk/i3statusbear/internal/config"
+	"github.com/afreakk/i3statusbear/internal/config"
 )
 
 type Output struct {
@@ -20,7 +20,7 @@ type Output struct {
 	jsonSeparator        []byte
 }
 
-func (o *Output) Init(config Config.Config) {
+func (o *Output) Init(config config.Config) {
 	o.jsonSeparator = []byte(",")
 	// init stdout writer
 	o.encodeToStdout = json.NewEncoder(os.Stdout)

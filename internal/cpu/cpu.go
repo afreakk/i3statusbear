@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	Config "github.com/afreakk/i3statusbear/internal/config"
-	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
-	Util "github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/i3statusbear/internal/config"
+	"github.com/afreakk/i3statusbear/internal/protocol"
+	"github.com/afreakk/i3statusbear/internal/util"
 )
 
 func getCPUSample() (idle, total int64) {
@@ -34,7 +34,7 @@ func getCPUSample() (idle, total int64) {
 	return
 }
 
-func Cpu(output *Protocol.Output, module Config.Module) func() {
+func Cpu(output *protocol.Output, module config.Module) func() {
 	var lastIdle, lastTotal int64
 	formatString := func() string {
 		idle, total := getCPUSample()
@@ -42,13 +42,13 @@ func Cpu(output *Protocol.Output, module Config.Module) func() {
 		totalTicks := total - lastTotal
 		lastTotal = total
 		lastIdle = idle
-		return Util.RenderBar(module, totalTicks-idleTicks, totalTicks)
+		return util.RenderBar(module, totalTicks-idleTicks, totalTicks)
 	}
-	cpuMsg := &Protocol.Message{
+	cpuMsg := &protocol.Message{
 		FullText: formatString(),
 	}
 	output.Messages = append(output.Messages, cpuMsg)
-	Util.ApplyModuleConfigToMessage(module, cpuMsg)
+	util.ApplyModuleConfigToMessage(module, cpuMsg)
 	var lastFullText string
 	return func() {
 		cpuMsg.FullText = formatString()

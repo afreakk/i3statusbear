@@ -7,9 +7,9 @@ import (
 
 	"github.com/afreakk/go-i3"
 
-	Config "github.com/afreakk/i3statusbear/internal/config"
-	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
-	Util "github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/i3statusbear/internal/config"
+	"github.com/afreakk/i3statusbear/internal/protocol"
+	"github.com/afreakk/i3statusbear/internal/util"
 )
 
 func subscribeToI3Event(event i3.EventType, cb func()) {
@@ -20,7 +20,7 @@ func subscribeToI3Event(event i3.EventType, cb func()) {
 	log.Fatal(recv.Close())
 }
 
-func ActiveWindow(output *Protocol.Output, module Config.Module) {
+func ActiveWindow(output *protocol.Output, module config.Module) {
 	formatString := func() string {
 		tree, err := i3.GetTree()
 		if err != nil {
@@ -36,10 +36,10 @@ func ActiveWindow(output *Protocol.Output, module Config.Module) {
 					return node.Focused == true
 				}).Name))
 	}
-	wndMsg := &Protocol.Message{
+	wndMsg := &protocol.Message{
 		FullText: formatString(),
 	}
-	Util.ApplyModuleConfigToMessage(module, wndMsg)
+	util.ApplyModuleConfigToMessage(module, wndMsg)
 	output.Messages = append(output.Messages, wndMsg)
 	var lastFullText string
 	go subscribeToI3Event(i3.WindowEventType, func() {

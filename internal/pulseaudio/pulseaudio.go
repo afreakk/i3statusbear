@@ -1,9 +1,9 @@
 package pulseaudio
 
 import (
-	Config "github.com/afreakk/i3statusbear/internal/config"
-	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
-	Util "github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/i3statusbear/internal/config"
+	"github.com/afreakk/i3statusbear/internal/protocol"
+	"github.com/afreakk/i3statusbear/internal/util"
 	"github.com/godbus/dbus"
 	"github.com/sqp/pulseaudio"
 )
@@ -20,7 +20,7 @@ func (cl *Client) DeviceVolumeUpdated(path dbus.ObjectPath, values []uint32) {
 	cl.updatePulseMsg(values, baseVolume)
 }
 
-func Pulseaudio(output *Protocol.Output, module Config.Module) error {
+func Pulseaudio(output *protocol.Output, module config.Module) error {
 	// === Start: PulseAudio setup ===
 	pulse, e := pulseaudio.New()
 	if e != nil {
@@ -40,12 +40,12 @@ func Pulseaudio(output *Protocol.Output, module Config.Module) error {
 		return e
 	}
 	formatPulseAudioText := func(volumes []uint32, baseVolume uint32) string {
-		return Util.RenderBar(module, int64(volumes[0]), int64(baseVolume))
+		return util.RenderBar(module, int64(volumes[0]), int64(baseVolume))
 	}
-	pulseAudioMsg := &Protocol.Message{
+	pulseAudioMsg := &protocol.Message{
 		FullText: formatPulseAudioText(volumes, baseVolume),
 	}
-	Util.ApplyModuleConfigToMessage(module, pulseAudioMsg)
+	util.ApplyModuleConfigToMessage(module, pulseAudioMsg)
 	updatePulseMsg := func(volumes []uint32, baseVolume uint32) {
 		pulseAudioMsg.FullText = formatPulseAudioText(volumes, baseVolume)
 		output.PrintMsgs()

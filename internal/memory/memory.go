@@ -6,12 +6,12 @@ import (
 	"strconv"
 	"strings"
 
-	Config "github.com/afreakk/i3statusbear/internal/config"
-	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
-	Util "github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/i3statusbear/internal/config"
+	"github.com/afreakk/i3statusbear/internal/protocol"
+	"github.com/afreakk/i3statusbear/internal/util"
 )
 
-func Memory(output *Protocol.Output, module Config.Module) func() {
+func Memory(output *protocol.Output, module config.Module) func() {
 	formatString := func() string {
 		f, _ := os.Open("/proc/meminfo")
 		fScanner := bufio.NewScanner(f)
@@ -30,13 +30,13 @@ func Memory(output *Protocol.Output, module Config.Module) func() {
 			}
 		}
 		f.Close()
-		return Util.RenderBar(module, memtotal-memavail, memtotal)
+		return util.RenderBar(module, memtotal-memavail, memtotal)
 	}
-	memMsg := &Protocol.Message{
+	memMsg := &protocol.Message{
 		FullText: formatString(),
 	}
 	output.Messages = append(output.Messages, memMsg)
-	Util.ApplyModuleConfigToMessage(module, memMsg)
+	util.ApplyModuleConfigToMessage(module, memMsg)
 	var lastFullText string
 	return func() {
 		memMsg.FullText = formatString()

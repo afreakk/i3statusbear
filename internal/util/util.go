@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	Config "github.com/afreakk/i3statusbear/internal/config"
-	Protocol "github.com/afreakk/i3statusbear/internal/protocol"
+	"github.com/afreakk/i3statusbear/internal/config"
+	"github.com/afreakk/i3statusbear/internal/protocol"
 )
 
-func ApplyModuleConfigToMessage(module Config.Module, message *Protocol.Message) {
+func ApplyModuleConfigToMessage(module config.Module, message *protocol.Message) {
 	if module.Align != "" {
 		message.Align = module.Align
 	}
@@ -45,7 +45,7 @@ func ApplyModuleConfigToMessage(module Config.Module, message *Protocol.Message)
 	}
 }
 
-func RenderBar(module Config.Module, filled int64, total int64) string {
+func RenderBar(module config.Module, filled int64, total int64) string {
 	filledBarsCount := filled * module.BarWidth / total
 	remainingCount := module.BarWidth - filledBarsCount
 	filledBars := strings.Repeat(module.BarFilled, int(filledBarsCount))
