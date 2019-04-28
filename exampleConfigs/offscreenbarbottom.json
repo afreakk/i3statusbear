@@ -6,7 +6,7 @@
         "cron": "@every 5s",
         "instance": "lol",
         "color": "#00FFD5",
-        "min_width": 600,
+        "min_width": 400,
         "align": "center",
 
         "bar_width": 15,
@@ -19,7 +19,7 @@
         "cron": "@every 5s",
         "instance": "cpu-uzg",
         "color": "#00FFD5",
-        "min_width": 450,
+        "min_width": 400,
         "align": "right",
 
         "bar_width": 15,
