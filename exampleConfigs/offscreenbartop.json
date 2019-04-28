@@ -92,7 +92,7 @@
         "markup": "pango"
     },{
         "name": "command",
-        "cron": "@every 60s",
+        "cron": "@every 5m",
         "instance": "archPkgStatus",
         "color": "#00FFD5",
         "min_width": 213,
