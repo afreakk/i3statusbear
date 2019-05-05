@@ -74,9 +74,9 @@
         "align": "center",
 
         "bar_width": 20,
-        "bar_filled": "‾",
-        "bar_empty": "_",
-        "sprintf": "🔊 [<span fgcolor='#FD00E1'>%s\\%s</span>]",
+        "bar_filled": "▰",
+        "bar_empty": "▱",
+        "sprintf": "🔊 <span fgcolor='#FD00E1'>%s%s</span>",
         "markup": "pango"
     },{
         "name": "command",
