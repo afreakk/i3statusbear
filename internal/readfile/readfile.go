@@ -12,7 +12,7 @@ import (
 func Readfile(output *protocol.Output, module config.Module) func() {
 	formatString := func() string {
 		data, _ := ioutil.ReadFile(module.FilePath)
-		return fmt.Sprintf(module.Sprintf, string(data))
+		return fmt.Sprintf(module.Sprintf, string(data[:len(data)-1]))
 	}
 	fileMsg := &protocol.Message{
 		FullText: formatString(),
