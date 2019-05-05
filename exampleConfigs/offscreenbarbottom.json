@@ -34,7 +34,7 @@
         "sprintf": "<span fgcolor='#FD00E1'>%.2s℃</span>]",
         "instance": "cputemp",
         "color": "#00FFD5",
-        "min_width": 120,
+        "min_width": 160,
         "align": "left",
         "markup": "pango"
     },{
@@ -44,7 +44,7 @@
         "sprintf": "[gpu <span fgcolor='#FD00E1'>%.2s℃</span>",
         "instance": "gputemp",
         "color": "#00FFD5",
-        "min_width": 120,
+        "min_width": 160,
         "align": "center",
         "markup": "pango"
     },{
@@ -54,7 +54,7 @@
         "sprintf": "fan_pwm <span fgcolor='#FD00E1'>%s</span>",
         "instance": "gpufanspeed",
         "color": "#00FFD5",
-        "min_width": 120,
+        "min_width": 160,
         "align": "center",
         "markup": "pango"
     },{
@@ -64,7 +64,7 @@
         "sprintf": "fan_mode <span fgcolor='#FD00E1'>%s</span>]",
         "instance": "gpufanmode",
         "color": "#00FFD5",
-        "min_width": 120,
+        "min_width": 160,
         "align": "left",
         "markup": "pango"
     },{
