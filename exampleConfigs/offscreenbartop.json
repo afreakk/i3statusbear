@@ -38,7 +38,7 @@
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["bitcoin"],
 
-        "sprintf": "<b>₿</b> <span fgcolor='#FD00E1'>%.4s</span>",
+        "sprintf": "<b>₿</b> <span fgcolor='#FD00E1'>%s</span>",
         "markup": "pango"
     },{
         "name": "command",
@@ -51,7 +51,7 @@
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["bitcoin-cash"],
 
-        "sprintf": "<b>bch</b> <span fgcolor='#FD00E1'>%.3s</span>",
+        "sprintf": "<b>bch</b> <span fgcolor='#FD00E1'>%s</span>",
         "markup": "pango"
     },{
         "name": "command",
@@ -64,7 +64,7 @@
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["ethereum"],
 
-        "sprintf": "<b>Ξ</b> <span fgcolor='#FD00E1'>%.3s</span>",
+        "sprintf": "<b>Ξ</b> <span fgcolor='#FD00E1'>%s</span>",
         "markup": "pango"
     },{
         "name": "pulseaudio",
