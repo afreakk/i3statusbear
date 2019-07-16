@@ -13,7 +13,10 @@ import (
 
 func Memory(output *protocol.Output, module config.Module) func() {
 	formatString := func() string {
-		f, _ := os.Open("/proc/meminfo")
+		f, err := os.Open("/proc/meminfo")
+		if err != nil {
+			return err.Error()
+		}
 		fScanner := bufio.NewScanner(f)
 		var line string
 		var memtotal int64
@@ -21,9 +24,15 @@ func Memory(output *protocol.Output, module config.Module) func() {
 		for fScanner.Scan() {
 			line = fScanner.Text()
 			if strings.HasPrefix(line, "MemTotal") {
-				memtotal, _ = strconv.ParseInt(strings.Fields(line)[1], 10, 32)
+				memtotal, err = strconv.ParseInt(strings.Fields(line)[1], 10, 32)
+				if err != nil {
+					return err.Error()
+				}
 			} else if strings.HasPrefix(line, "MemAvailable") {
-				memavail, _ = strconv.ParseInt(strings.Fields(line)[1], 10, 32)
+				memavail, err = strconv.ParseInt(strings.Fields(line)[1], 10, 32)
+				if err != nil {
+					return err.Error()
+				}
 			}
 			if memtotal != 0 && memavail != 0 {
 				break
@@ -42,7 +51,7 @@ func Memory(output *protocol.Output, module config.Module) func() {
 		memMsg.FullText = formatString()
 		if lastFullText != memMsg.FullText {
 			output.PrintMsgs()
+			lastFullText = memMsg.FullText
 		}
-		lastFullText = memMsg.FullText
 	}
 }

@@ -3,7 +3,6 @@ package activewindow
 import (
 	"fmt"
 	"html"
-	"log"
 
 	"github.com/afreakk/go-i3"
 
@@ -12,19 +11,11 @@ import (
 	"github.com/afreakk/i3statusbear/internal/util"
 )
 
-func subscribeToI3Event(event i3.EventType, cb func()) {
-	recv := i3.Subscribe(event)
-	for recv.Next() {
-		cb()
-	}
-	log.Fatal(recv.Close())
-}
-
 func ActiveWindow(output *protocol.Output, module config.Module) {
 	formatString := func() string {
 		tree, err := i3.GetTree()
 		if err != nil {
-			panic(err)
+			return err.Error()
 		}
 		return fmt.Sprintf(
 			module.Sprintf,
@@ -42,11 +33,16 @@ func ActiveWindow(output *protocol.Output, module config.Module) {
 	util.ApplyModuleConfigToMessage(module, wndMsg)
 	output.Messages = append(output.Messages, wndMsg)
 	var lastFullText string
-	go subscribeToI3Event(i3.WindowEventType, func() {
-		wndMsg.FullText = formatString()
-		if lastFullText != wndMsg.FullText {
-			output.PrintMsgs()
+	go func() {
+		recv := i3.Subscribe(i3.WindowEventType)
+		for recv.Next() {
+			wndMsg.FullText = formatString()
+			if lastFullText != wndMsg.FullText {
+				output.PrintMsgs()
+				lastFullText = wndMsg.FullText
+			}
 		}
-		lastFullText = wndMsg.FullText
-	})
+		wndMsg.FullText = recv.Close().Error()
+		output.PrintMsgs()
+	}()
 }

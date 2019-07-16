@@ -24,7 +24,7 @@ func Pulseaudio(output *protocol.Output, module config.Module) error {
 	// === Start: PulseAudio setup ===
 	pulse, e := pulseaudio.New()
 	if e != nil {
-		panic(e)
+		return e
 	}
 
 	var pathToFallbackSink dbus.ObjectPath

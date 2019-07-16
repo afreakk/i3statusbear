@@ -29,7 +29,7 @@ func Command(output *protocol.Output, module config.Module) func() {
 		cmdMsg.FullText = formatString()
 		if lastFullText != cmdMsg.FullText {
 			output.PrintMsgs()
+			lastFullText = cmdMsg.FullText
 		}
-		lastFullText = cmdMsg.FullText
 	}
 }

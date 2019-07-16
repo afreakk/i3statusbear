@@ -30,7 +30,11 @@ func main() {
 	}
 	configFilePath := os.Args[1]
 
-	cfg := config.GetConfigFromPath(configFilePath)
+	cfg, err := config.GetConfigFromPath(configFilePath)
+	if err != nil {
+		panic(err)
+	}
+
 	if osArgsLen > 2 {
 		cfg.WMClient = os.Args[2]
 	}
@@ -42,25 +46,32 @@ func main() {
 	}
 
 	output := protocol.Output{}
-	output.Init(cfg)
+	err = output.Init(cfg)
+	if err != nil {
+		panic(err)
+	}
 
 	c := cron.New()
 	for _, module := range cfg.Modules {
+		var err error
 		switch module.Name {
 		case "datetime":
-			c.AddFunc(module.Cron, datetime.Datetime(&output, module))
+			err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
 		case "pulseaudio":
-			pulseaudio.Pulseaudio(&output, module)
+			err = pulseaudio.Pulseaudio(&output, module)
 		case "readfile":
-			c.AddFunc(module.Cron, readfile.Readfile(&output, module))
+			err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
 		case "memory":
-			c.AddFunc(module.Cron, memory.Memory(&output, module))
+			err = c.AddFunc(module.Cron, memory.Memory(&output, module))
 		case "cpu":
-			c.AddFunc(module.Cron, cpu.Cpu(&output, module))
+			err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
 		case "command":
-			c.AddFunc(module.Cron, command.Command(&output, module))
+			err = c.AddFunc(module.Cron, command.Command(&output, module))
 		case "activewindow":
 			activewindow.ActiveWindow(&output, module)
+		}
+		if err != nil {
+			panic(err)
 		}
 	}
 	output.PrintMsgs()

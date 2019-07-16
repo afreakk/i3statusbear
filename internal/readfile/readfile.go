@@ -11,7 +11,10 @@ import (
 
 func Readfile(output *protocol.Output, module config.Module) func() {
 	formatString := func() string {
-		data, _ := ioutil.ReadFile(module.FilePath)
+		data, err := ioutil.ReadFile(module.FilePath)
+		if err != nil {
+			return err.Error()
+		}
 		return fmt.Sprintf(module.Sprintf, string(data[:len(data)-1]))
 	}
 	fileMsg := &protocol.Message{
@@ -24,7 +27,7 @@ func Readfile(output *protocol.Output, module config.Module) func() {
 		fileMsg.FullText = formatString()
 		if lastFullText != fileMsg.FullText {
 			output.PrintMsgs()
+			lastFullText = fileMsg.FullText
 		}
-		lastFullText = fileMsg.FullText
 	}
 }

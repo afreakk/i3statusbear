@@ -40,16 +40,16 @@ type Config struct {
 	WMClient              string   `json:"wmclient,omitempty"`
 }
 
-func GetConfigFromPath(configFilePath string) Config {
-	cfgTxt, error := ioutil.ReadFile(configFilePath)
-	if error != nil {
-		panic(error)
-	}
-
+func GetConfigFromPath(configFilePath string) (Config, error) {
 	var cfg Config
-	if error = json.Unmarshal(cfgTxt, &cfg); error != nil {
-		panic(error)
+	cfgTxt, err := ioutil.ReadFile(configFilePath)
+	if err != nil {
+		return cfg, err
 	}
 
-	return cfg
+	if err = json.Unmarshal(cfgTxt, &cfg); err != nil {
+		return cfg, err
+	}
+
+	return cfg, nil
 }

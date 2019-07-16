@@ -20,7 +20,7 @@ type Output struct {
 	jsonSeparator        []byte
 }
 
-func (o *Output) Init(cfg config.Config) {
+func (o *Output) Init(cfg config.Config) error {
 	o.jsonSeparator = []byte(",")
 	// init stdout writer
 	o.encodeToStdout = json.NewEncoder(os.Stdout)
@@ -43,9 +43,10 @@ func (o *Output) Init(cfg config.Config) {
 
 	var err error
 	if o.renderInterval, err = time.ParseDuration(cfg.MinimumRenderInterval); err != nil {
-		panic(err)
+		return err
 	}
-	o.renderTimer = time.AfterFunc(o.renderInterval, o.actuallyPrintMsgs)
+	o.renderTimer = time.AfterFunc(o.renderInterval, o.ActuallyPrintMsgs)
+	return nil
 }
 
 func (o *Output) PrintMsgs() {
@@ -56,7 +57,7 @@ func (o *Output) PrintMsgs() {
 	}
 	o.mux.Unlock()
 }
-func (o *Output) actuallyPrintMsgs() {
+func (o *Output) ActuallyPrintMsgs() {
 	o.renderTimerIsRunning = false
 	o.encodeToStdout.Encode(o.Messages)
 	// And then separator between messages in our infinite array that never ends

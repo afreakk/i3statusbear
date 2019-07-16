@@ -11,8 +11,11 @@ import (
 	"github.com/afreakk/i3statusbear/internal/util"
 )
 
-func getCPUSample() (idle, total int64) {
-	f, _ := os.Open("/proc/stat")
+func getCPUSample() (idle, total int64, err error) {
+	f, err := os.Open("/proc/stat")
+	if err != nil {
+		return 0, 0, err
+	}
 	fScanner := bufio.NewScanner(f)
 	var line string
 	for fScanner.Scan() {
@@ -21,7 +24,10 @@ func getCPUSample() (idle, total int64) {
 			fields := strings.Fields(line)
 			numFields := len(fields)
 			for i := 1; i < numFields; i++ {
-				val, _ := strconv.ParseInt(fields[i], 10, 64)
+				val, parseErr := strconv.ParseInt(fields[i], 10, 64)
+				if parseErr != nil {
+					return 0, 0, err
+				}
 				total += val // tally up all the numbers to get total ticks
 				if i == 4 {  // idle is the 5th field in the cpu line
 					idle = val
@@ -37,7 +43,10 @@ func getCPUSample() (idle, total int64) {
 func Cpu(output *protocol.Output, module config.Module) func() {
 	var lastIdle, lastTotal int64
 	formatString := func() string {
-		idle, total := getCPUSample()
+		idle, total, err := getCPUSample()
+		if err != nil {
+			return err.Error()
+		}
 		idleTicks := idle - lastIdle
 		totalTicks := total - lastTotal
 		lastTotal = total
@@ -54,7 +63,7 @@ func Cpu(output *protocol.Output, module config.Module) func() {
 		cpuMsg.FullText = formatString()
 		if lastFullText != cpuMsg.FullText {
 			output.PrintMsgs()
+			lastFullText = cpuMsg.FullText
 		}
-		lastFullText = cpuMsg.FullText
 	}
 }
