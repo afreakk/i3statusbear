@@ -20,7 +20,24 @@ func (cl *Client) DeviceVolumeUpdated(path dbus.ObjectPath, values []uint32) {
 	cl.updatePulseMsg(values, baseVolume)
 }
 
+func loadPulseAudioModuleIfNeeded() error {
+	isLoaded, err := pulseaudio.ModuleIsLoaded()
+	if err != nil {
+		return err
+	}
+	if !isLoaded {
+		err = pulseaudio.LoadModule()
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func Pulseaudio(output *protocol.Output, module config.Module) error {
+	if errLoadingModule := loadPulseAudioModuleIfNeeded(); errLoadingModule != nil {
+		return errLoadingModule
+	}
 	// === Start: PulseAudio setup ===
 	pulse, e := pulseaudio.New()
 	if e != nil {
