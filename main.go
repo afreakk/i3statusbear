@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"runtime"
 
 	"github.com/afreakk/go-i3"
 	"github.com/afreakk/i3statusbear/internal/activewindow"
@@ -76,6 +77,5 @@ func main() {
 	}
 	output.PrintMsgs()
 	c.Start()
-	//hacky way of blocking forever..
-	select {}
+	runtime.Goexit()
 }
