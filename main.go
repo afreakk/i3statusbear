@@ -40,7 +40,8 @@ func main() {
 		cfg.WMClient = os.Args[2]
 	}
 
-	go protocol.HandleInput()
+	// not implemented, havent really had the use for it
+	//go protocol.HandleInput()
 
 	if cfg.WMClient == "sway" {
 		i3.WMClient = i3.WMTypeSway
@@ -72,7 +73,7 @@ func main() {
 			activewindow.ActiveWindow(&output, module)
 		}
 		if err != nil {
-			panic(err)
+			fmt.Fprintf(os.Stderr, "\nError when initializing module: %s, \nerror: %s\n", module.Name, err.Error())
 		}
 	}
 	output.PrintMsgs()
