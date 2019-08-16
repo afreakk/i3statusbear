@@ -1,6 +1,7 @@
 package datetime
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/afreakk/i3statusbear/internal/config"
@@ -10,7 +11,7 @@ import (
 
 func Datetime(output *protocol.Output, module config.Module) func() {
 	formatDateTimeMsg := func() string {
-		return time.Now().Format(module.DateTimeFormat)
+		return fmt.Sprintf(module.Sprintf, time.Now().Format(module.DateTimeFormat))
 	}
 	dateTimeMsg := &protocol.Message{
 		FullText: formatDateTimeMsg(),

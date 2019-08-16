@@ -5,84 +5,84 @@
         "name": "command",
         "cron": "@every 30s",
         "instance": "freespace_bigdisk",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 150,
         "align": "left",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
         "command_args": ["/mnt/bigdisk"],
 
-        "sprintf": "[<span fgcolor='#FD00E1'>%s</span>]",
+        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
         "markup": "pango"
     },{
         "name": "command",
         "cron": "@every 30s",
         "instance": "freespace_root",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 330,
         "align": "left",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
         "command_args": ["/"],
 
-        "sprintf": "[<span fgcolor='#FD00E1'>%s</span>]",
+        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
         "markup": "pango"
     },{
         "name": "command",
         "cron": "@every 10s",
         "instance": "bitcoin",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 100,
         "align": "center",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["bitcoin"],
 
-        "sprintf": "<b>₿</b> <span fgcolor='#FD00E1'>%s</span>",
+        "sprintf": "<b>₿</b> <span fgcolor='#d79921'>%s</span>",
         "markup": "pango"
     },{
         "name": "command",
         "cron": "@every 10s",
         "instance": "bch",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 100,
         "align": "center",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["bitcoin-cash"],
 
-        "sprintf": "<b>bch</b> <span fgcolor='#FD00E1'>%s</span>",
+        "sprintf": "<b>bch</b> <span fgcolor='#d79921'>%s</span>",
         "markup": "pango"
     },{
         "name": "command",
         "cron": "@every 10s",
         "instance": "ethereum",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 100,
         "align": "center",
 
         "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["ethereum"],
 
-        "sprintf": "<b>Ξ</b> <span fgcolor='#FD00E1'>%s</span>",
+        "sprintf": "<b>Ξ</b> <span fgcolor='#d79921'>%s</span>",
         "markup": "pango"
     },{
         "name": "pulseaudio",
         "instance": "1",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 600,
         "align": "center",
 
         "bar_width": 20,
         "bar_filled": "▰",
         "bar_empty": "▱",
-        "sprintf": "🔊 <span fgcolor='#FD00E1'>%s%s</span>",
+        "sprintf": "🔊 <span fgcolor='#d79921'>%s%s</span>",
         "markup": "pango"
     },{
         "name": "command",
         "cron": "@every 10s",
         "instance": "redshift",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 125,
         "align": "right",
 
@@ -94,7 +94,7 @@
         "name": "command",
         "cron": "@every 5m",
         "instance": "archPkgStatus",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 213,
         "align": "right",
 

@@ -1,4 +1,4 @@
 #!/bin/bash
 pac=$(checkupdates | wc -l)
 aur=$(auracle sync | wc -l)
-echo "<span fgcolor='#FD00E1'>$pac</span> ⇅ <span fgcolor='#FD00E1'>$aur</span>"
+echo "<span fgcolor='#d79921'>$pac</span> ⇅ <span fgcolor='#d79921'>$aur</span>"

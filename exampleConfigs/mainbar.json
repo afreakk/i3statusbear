@@ -4,19 +4,20 @@
     "modules": [{
         "name": "activewindow",
         "instance": "1",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 1600,
         "align": "center",
         "separator": false,
         "separator_block_width": 1,
         "markup": "pango",
-        "sprintf": "[<span fgcolor='#FD00E1'>%s</span>]"
+        "sprintf": "[<span fgcolor='#d79921'>%s</span>]"
     },{
         "name": "datetime",
-        "datetime_format": "[<span fgcolor='#FD00E1'>15:04 2/Jan</span>]",
+        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
+        "datetime_format": "15:04 2/Jan",
         "cron": "0 * * * * *",
         "instance": "1",
-        "color": "#00FFD5",
+        "color": "#458588",
         "min_width": 150,
         "align": "center",
         "separator": false,
