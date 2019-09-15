@@ -24,7 +24,7 @@ func ActiveWindow(output *protocol.Output, module config.Module) {
 			// but whatever, htmi escape works for now
 			html.EscapeString(
 				tree.Root.FindFocused(func(node *i3.Node) bool {
-					return node.Focused == true
+					return node.Focused
 				}).Name))
 	}
 	wndMsg := &protocol.Message{

@@ -1,6 +1,7 @@
 # StatusBear
 ## Go code for talking with [i3 bar](https://i3wm.org/i3bar/) using [i3 protocol](https://i3wm.org/docs/i3bar-protocol.html) and creating usefull and fast bars.
 ## Also works with [Sway](https://swaywm.org/)!
+### Set sway or i3 as 2nd argument, or set wmclient attribute on config.json. (argument will override attribute)
 
 ![Example](https://github.com/afreakk/i3statusbear/blob/master/imgs/bars.png "Example bars")
 
@@ -13,51 +14,59 @@
 - pulseaudio (volume bar)
 - readfile (read arbitrary file)
 
-## Example usage (from my swaywm config)
+## Example usage
 ```
 bar {
-	position bottom
 	id main_bar
-	status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/mainbar.json
+	position bottom
+	status_command exec ~/go/bin/i3statusbear ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/mainbar.json i3 2>> ~/log/statusbear.main_bar.log
 	output $primaryScreen
 	tray_output none
-	separator_symbol ""
+	bindsym button3 exec "rofi -modi combi -show combi -combi-modi run,drun,window"
+	separator_symbol " "
 	colors {
-		background #000000
-		inactive_workspace	#000000 #000000	#00FFD5
-		focused_workspace	#000000 #00FFD5	#000000
-		active_workspace	#000000 #008c75	#000000
-		urgent_workspace	#000000 #FD00E1	#000000
+		background #282828
+		inactive_workspace	#282828 #282828	#685d52
+		focused_workspace	#282828 #d79921	#282828
+		active_workspace	#282828 #685d52	#282828
+		urgent_workspace	#282828 #fb4934	#282828
 	}
 }
 
 bar {
+	id off_bar_top
 	position top
-	workspace_buttons no
-	status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbartop.json
+	status_command exec ~/go/bin/i3statusbear ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbartop.json i3 2>> ~/log/statusbear.off_bar_top.log
 	output $offScreen
 	tray_output none
-	id off_bar_top
 	bindsym button4 exec ~/bin/setSinkVolumeDefault.sh +5%
 	bindsym button5 exec ~/bin/setSinkVolumeDefault.sh -5%
-	separator_symbol ""
+	separator_symbol " "
 	colors {
-		background #000000
+		background #282828
+		inactive_workspace	#282828 #282828	#685d52
+		focused_workspace	#282828 #d79921	#282828
+		active_workspace	#282828 #685d52	#282828
+		urgent_workspace	#282828 #fb4934	#282828
 	}
+	workspace_buttons no
 }
 
 bar {
-	position bottom
 	id off_bar_bottom
-	status_command go run ~/go/src/github.com/afreakk/i3statusbear/main.go ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbarbottom.json
+	position bottom
+	status_command exec ~/go/bin/i3statusbear ~/go/src/github.com/afreakk/i3statusbear/exampleConfigs/offscreenbarbottom.json i3 2>> ~/log/statusbear.off_bar_bottom.log
 	output $offScreen
-	separator_symbol ""
+	tray_output $offScreen
+	bindsym button3 exec "rofi -modi combi -show combi -combi-modi run,drun,window"
+	separator_symbol " "
 	colors {
-		background #000000
-		inactive_workspace	#000000 #000000	#00FFD5
-		focused_workspace	#000000 #00FFD5	#000000
-		active_workspace	#000000 #008c75	#000000
-		urgent_workspace	#000000 #FD00E1	#000000
+		background #282828
+		inactive_workspace	#282828 #282828	#685d52
+		focused_workspace	#282828 #d79921	#282828
+		active_workspace	#282828 #685d52	#282828
+		urgent_workspace	#282828 #fb4934	#282828
 	}
 }
+
 ```

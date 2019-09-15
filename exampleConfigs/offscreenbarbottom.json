@@ -5,7 +5,7 @@
         "name": "memory",
         "cron": "@every 5s",
         "instance": "lol",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 250,
         "align": "left",
 
@@ -18,7 +18,7 @@
         "name": "cpu",
         "cron": "@every 5s",
         "instance": "cpu-uzg",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 250,
         "align": "right",
 
@@ -33,7 +33,7 @@
         "file_path": "/sys/class/thermal/thermal_zone2/temp",
         "sprintf": "<span fgcolor='#d79921'>%.2s℃</span>",
         "instance": "cputemp",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 160,
         "align": "left",
         "markup": "pango"
@@ -43,7 +43,7 @@
         "file_path": "/sys/class/drm/card0/device/hwmon/hwmon2/temp1_input",
         "sprintf": "gpu <span fgcolor='#d79921'>%.2s℃</span>",
         "instance": "gputemp",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 160,
         "align": "right",
         "markup": "pango"
@@ -53,7 +53,7 @@
         "file_path": "/sys/class/drm/card0/device/hwmon/hwmon2/pwm1",
         "sprintf": "fan_pwm <span fgcolor='#d79921'>%s</span>",
         "instance": "gpufanspeed",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 160,
         "align": "center",
         "markup": "pango"
@@ -63,7 +63,7 @@
         "file_path": "/sys/class/drm/card0/device/hwmon/hwmon2/pwm1_enable",
         "sprintf": "fan_mode <span fgcolor='#d79921'>%s</span>",
         "instance": "gpufanmode",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 160,
         "align": "left",
         "markup": "pango"
@@ -73,7 +73,7 @@
         "datetime_format": "15:04 2/Jan",
         "cron": "0 * * * * *",
         "instance": "1",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 250,
         "align": "right",
         "markup": "pango"

@@ -2,6 +2,7 @@ package protocol
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"sync"
 	"syscall"
@@ -20,7 +21,7 @@ type Output struct {
 	jsonSeparator        []byte
 }
 
-func (o *Output) Init(cfg config.Config) error {
+func (o *Output) Init(cfg config.Config) (err error) {
 	o.jsonSeparator = []byte(",")
 	// init stdout writer
 	o.encodeToStdout = json.NewEncoder(os.Stdout)
@@ -28,25 +29,30 @@ func (o *Output) Init(cfg config.Config) error {
 
 	// then we need to specify protocol we use
 	// and send it to Stdout
-	o.encodeToStdout.Encode(Protocol{
+	err = o.encodeToStdout.Encode(Protocol{
 		Version: 1,
 		// dont know about these params, found it somewhere, and it works..
 		StopSignal:  int(syscall.Signal(10)),
 		ContSignal:  int(syscall.Signal(12)),
 		ClickEvents: false,
 	})
+	if err != nil {
+		return
+	}
 	// start our array of arrays.. (we never end it though)
 	// kindof hacky, is there a better way ?
-	os.Stdout.Write([]byte("["))
+	_, err = os.Stdout.Write([]byte("["))
+	if err != nil {
+		return
+	}
 
 	o.Messages = []*Message{}
 
-	var err error
 	if o.renderInterval, err = time.ParseDuration(cfg.MinimumRenderInterval); err != nil {
-		return err
+		return
 	}
 	o.renderTimer = time.AfterFunc(o.renderInterval, o.ActuallyPrintMsgs)
-	return nil
+	return
 }
 
 func (o *Output) PrintMsgs() {
@@ -57,11 +63,19 @@ func (o *Output) PrintMsgs() {
 	}
 	o.mux.Unlock()
 }
+
+func printToStderrIfErr(err error) {
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+	}
+}
+
 func (o *Output) ActuallyPrintMsgs() {
 	o.renderTimerIsRunning = false
-	o.encodeToStdout.Encode(o.Messages)
+	printToStderrIfErr(o.encodeToStdout.Encode(o.Messages))
 	// And then separator between messages in our infinite array that never ends
-	os.Stdout.Write(o.jsonSeparator)
+	_, err := os.Stdout.Write(o.jsonSeparator)
+	printToStderrIfErr(err)
 }
 
 // === START: helper types for decode and encode to i3bar protocol ===
@@ -78,11 +92,11 @@ type Click struct {
 	Button     int      `json:"button"`
 	X          int      `json:"x"`
 	Y          int      `json:"y"`
-	Relative_x int      `json:relative_x`
-	Relative_y int      `json:relative_y`
-	Width      int      `json:width`
-	Height     int      `json:height`
-	Modifiers  []string `json:modifiers`
+	Relative_x int      `json:"relative_x"`
+	Relative_y int      `json:"relative_y"`
+	Width      int      `json:"width"`
+	Height     int      `json:"height"`
+	Modifiers  []string `json:"modifiers"`
 }
 
 type Message struct {

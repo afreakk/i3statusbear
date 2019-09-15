@@ -4,7 +4,7 @@
     "modules": [{
         "name": "activewindow",
         "instance": "1",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 1600,
         "align": "center",
         "separator": false,
@@ -17,7 +17,7 @@
         "datetime_format": "15:04 2/Jan",
         "cron": "0 * * * * *",
         "instance": "1",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 150,
         "align": "center",
         "separator": false,

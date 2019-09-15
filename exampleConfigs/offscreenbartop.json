@@ -5,7 +5,7 @@
         "name": "command",
         "cron": "@every 30s",
         "instance": "freespace_bigdisk",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 150,
         "align": "left",
 
@@ -18,7 +18,7 @@
         "name": "command",
         "cron": "@every 30s",
         "instance": "freespace_root",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 330,
         "align": "left",
 
@@ -31,7 +31,7 @@
         "name": "command",
         "cron": "@every 10s",
         "instance": "bitcoin",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 100,
         "align": "center",
 
@@ -44,7 +44,7 @@
         "name": "command",
         "cron": "@every 10s",
         "instance": "bch",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 100,
         "align": "center",
 
@@ -57,7 +57,7 @@
         "name": "command",
         "cron": "@every 10s",
         "instance": "ethereum",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 100,
         "align": "center",
 
@@ -69,7 +69,7 @@
     },{
         "name": "pulseaudio",
         "instance": "1",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 600,
         "align": "center",
 
@@ -82,7 +82,7 @@
         "name": "command",
         "cron": "@every 10s",
         "instance": "redshift",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 125,
         "align": "right",
 
@@ -94,7 +94,7 @@
         "name": "command",
         "cron": "@every 5m",
         "instance": "archPkgStatus",
-        "color": "#458588",
+        "color": "#928374",
         "min_width": 213,
         "align": "right",
 

@@ -1,6 +1,9 @@
 package pulseaudio
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/afreakk/i3statusbear/internal/config"
 	"github.com/afreakk/i3statusbear/internal/protocol"
 	"github.com/afreakk/i3statusbear/internal/util"
@@ -16,7 +19,10 @@ type Client struct {
 
 func (cl *Client) DeviceVolumeUpdated(path dbus.ObjectPath, values []uint32) {
 	var baseVolume uint32
-	cl.pulse.Device(path).Get("BaseVolume", &baseVolume)
+	err := cl.pulse.Device(path).Get("BaseVolume", &baseVolume)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+	}
 	cl.updatePulseMsg(values, baseVolume)
 }
 
@@ -47,7 +53,10 @@ func Pulseaudio(output *protocol.Output, module config.Module) error {
 	var pathToFallbackSink dbus.ObjectPath
 	// Here we assume you are using fallbacksink, so we query that
 	// altough later in pulse-callback we render whatever device you changed volume on :)
-	pulse.Core().Get("FallbackSink", &pathToFallbackSink)
+	getFallbackSinkErr := pulse.Core().Get("FallbackSink", &pathToFallbackSink)
+	if getFallbackSinkErr != nil {
+		return getFallbackSinkErr
+	}
 	volumes, e := pulse.Device(pathToFallbackSink).ListUint32("Volume")
 	if e != nil {
 		return e
