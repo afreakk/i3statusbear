@@ -4,25 +4,12 @@
     "modules": [{
         "name": "command",
         "cron": "@every 30s",
-        "instance": "freespace_bigdisk",
-        "color": "#928374",
-        "min_width": 150,
-        "align": "left",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
-        "command_args": ["/mnt/bigdisk"],
-
-        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 30s",
         "instance": "freespace_root",
         "color": "#928374",
         "min_width": 330,
         "align": "left",
 
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
+        "command_name": "/home/hans/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
         "command_args": ["/"],
 
         "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
@@ -35,7 +22,7 @@
         "min_width": 100,
         "align": "center",
 
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
+        "command_name": "/home/hans/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["bitcoin"],
 
         "sprintf": "<b>₿</b> <span fgcolor='#d79921'>%s</span>",
@@ -48,7 +35,7 @@
         "min_width": 100,
         "align": "center",
 
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
+        "command_name": "/home/hans/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["bitcoin-cash"],
 
         "sprintf": "<b>bch</b> <span fgcolor='#d79921'>%s</span>",
@@ -61,7 +48,7 @@
         "min_width": 100,
         "align": "center",
 
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
+        "command_name": "/home/hans/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
         "command_args": ["ethereum"],
 
         "sprintf": "<b>Ξ</b> <span fgcolor='#d79921'>%s</span>",
@@ -86,7 +73,7 @@
         "min_width": 125,
         "align": "right",
 
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/redshift.sh",
+        "command_name": "/home/hans/go/src/github.com/afreakk/i3statusbear/scripts/redshift.sh",
 
         "sprintf": "%s",
         "markup": "pango"
@@ -98,7 +85,7 @@
         "min_width": 213,
         "align": "right",
 
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
+        "command_name": "/home/hans/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
 
         "sprintf": "[%s]",
         "markup": "pango"
